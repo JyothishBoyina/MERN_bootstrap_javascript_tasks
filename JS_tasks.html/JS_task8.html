@@ -184,61 +184,60 @@
         </p>
       </div>
     </div>
+      <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById("registrationForm");
+    var inputs = form.querySelectorAll("input, textarea, select");
+    var password = document.getElementById("password");
+    var rePassword = document.getElementById("rePassword");
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var form = document.getElementById("registrationForm");
-        var inputs = form.querySelectorAll("input, textarea, select");
-        var password = document.getElementById("password");
-        var rePassword = document.getElementById("rePassword");
+    inputs.forEach(function (input) {
+      input.addEventListener("input", function () {
+        var poorLabel = input.closest(".form-group").querySelector(".poor");
 
-        inputs.forEach(function (input) {
-          input.addEventListener("input", function () {
-            var poorLabel = input.closest(".form-group").querySelector(".poor");
+        if (input.checkValidity() && input.value.trim() !== "") {
+          poorLabel.style.display = "none";
+        } else {
+          poorLabel.style.display = "inline";
+        }
 
-            if (input.checkValidity() && input.value.trim() !== "") {
-              poorLabel.style.display = "none";
-            } else {
-              poorLabel.style.display = "inline";
-            }
-
-            if (input.type === "password" || input.id === "rePassword") {
-              validatePasswordMatch();
-            }
-          });
-        });
-
-        form.addEventListener("submit", function (event) {
-          event.preventDefault();
-          var isValid = true;
-
-          inputs.forEach(function (input) {
-            var poorLabel = input.closest(".form-group").querySelector(".poor");
-
-            if (!input.checkValidity() || input.value.trim() === "") {
-              poorLabel.style.display = "inline";
-              isValid = false;
-            } else {
-              poorLabel.style.display = "none";
-            }
-          });
-
+        if (input.type === "password" || input.id === "rePassword") {
           validatePasswordMatch();
-
-          if (isValid) {
-            alert("Form submitted successfully!");
-          }
-        });
-
-        function validatePasswordMatch() {
-          var poorLabel = rePassword.closest(".form-group").querySelector(".mismatch");
-          if (password.value !== rePassword.value) {
-            poorLabel.style.display = "inline";
-          } else {
-            poorLabel.style.display = "none";
-          }
         }
       });
+    });
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var isValid = true;
+
+      inputs.forEach(function (input) {
+        var poorLabel = input.closest(".form-group").querySelector(".poor");
+
+        if (!input.checkValidity() || input.value.trim() === "") {
+          poorLabel.style.display = "inline";
+          isValid = false;
+        } else {
+          poorLabel.style.display = "none";
+        }
+      });
+
+      validatePasswordMatch();
+
+      if (isValid) {
+        alert("Form submitted successfully!");
+      }
+    });
+
+    function validatePasswordMatch() {
+      var poorLabel = rePassword.closest(".form-group").querySelector(".mismatch");
+      if (password.value !== rePassword.value) {
+        poorLabel.style.display = "inline";
+      } else {
+        poorLabel.style.display = "none";
+      }
+    }
+  });
     </script>
   </body>
 </html>
