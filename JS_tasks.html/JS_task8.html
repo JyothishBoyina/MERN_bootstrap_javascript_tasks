@@ -79,6 +79,9 @@
         color: blue;
         text-decoration: none;
       }
+      .form-group input[type="radio"] {
+            margin-right: 67px;
+        }
     </style>
   </head>
   <body>
@@ -112,11 +115,11 @@
         </div>
         <div class="form-group">
           <label class="gender-label">Gender</label>
+          <br>
           <label class="gender-input">
-            <input type="radio" name="gender" value="male" required /> Male
-          </label>
-          <label class="gender-input">
-            <input type="radio" name="gender" value="female" required /> Female
+            <input type="radio" name="gender" id="male" value="male" required> Male
+            <br> 
+            <input type="radio" name="gender" id="female" value="female" required > Female
           </label>
         </div>
         <div class="form-group">
@@ -168,13 +171,14 @@
             details are true
           
         </div>
+        <div class="login-link">
+            <p align="right">
+              Log in to <a href="https://ethnus.com/">Ethnus</a> website
+            </p>
+          </div>
         <button type="submit" class="submit-btn">REGISTER</button>
       </form>
-      <div class="login-link">
-        <p>
-          Log in to <a href="#">Eduma</a> website
-        </p>
-      </div>
+      
     </div>
 
     <script>
